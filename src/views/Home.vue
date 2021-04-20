@@ -1,10 +1,23 @@
 <template>
   <div class="home">
-    <div class="text-white">Home</div>
+    <Tweet v-for="tweet in tweets" :key="tweet._id" :tweet="tweet" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-export default {}
+import { ref } from 'vue';
+import vweets from '../vweets';
+import Tweet from '../components/Tweet'
+
+export default {
+  components: { Tweet },
+  setup () {
+    const tweets = ref(vweets);
+
+    return {
+      tweets,
+      Tweet
+    }
+  }
+}
 </script>
